@@ -10,30 +10,58 @@
   </head>
   <body>
     <h1 id="myHeading">JavaScript and the DOM</h1>
+
     <p>Making a web page interactive</p>
+
     <button id="toggleList">Hide list</button>
     <div class="list">
-      <p class="description">Things that are purple:</p>
+      <p class="description">Things that are items:</p>
       <input type="text" class="description">
       <button class="description">Change list description</button>
-      <ul>
-        <li>grapes
+      <ul class="list-group t20">
+        {% for todolist in todo_items %}
+          {% if todolist.completed %}
+        <li class="list-group-item todo-completed">
+          {{todolist.text}}
        
         </li>
-        <li>amethyst
+        {% else %}
+        <a href="#"><li class="list-group-item">
+          {{todolist.text}}
+       
+        </li></a>
+        {% endif %}
+        {% endfor %}
+        <li class="list-group-item">
+          grapes
        
         </li>
-        <li>lavender
+        <li class="list-group-item todo-completed">
+          amethyst
+       
+        </li>
+        <li class="list-group-item">
+          <s>lavender</s>
       
         </li>
-        <li>plums
+        <li class="list-group-item">
+          plums
          
         </li>
+
       </ul>
       <input type="text" class="addItemInput">
       <button class="addItemButton">Add item</button>
       <button class="removeItemButton">Remove last item</button>
-    </div>
-    <script src="app.js"></script>
+    
+    <footer>
+      <div>
+        <div class="col-lg-12 text-center">
+          Copyright &copy; Ragulraj Products 2020
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="app.js"></script>
   </body>
 </html>
